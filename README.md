@@ -95,8 +95,12 @@ Epochs: 10, Batch Size: 128, Adam optimizer is used.The training data will be ra
  
  
  ----    **Dense(1)**  : input shape(252), output shape(1)
+ 
+###Visualization of internal CNN state
     						
 ###Summary
 
 Initially started by adapting comma.ai and nvidia models. Comma.ai model didn't work out for me to solve this problem.
-Explored with nvidia model helped in driving car in Track1.But failed to work in Track 2.My interpretation is for this number of training dataset, it could be due to overfitting.As discussion was happening in forum, this could be due to million parameter models overfit , so some of them were showing success with smaller model. As my requirement is to run on CPU as i don't have GPU, i started to work with smaller convnet models.And one more issue is simulator (windows 64 bit) was taking almost 100% CPU to run and inference with original size(320x160 or higher resolution) needs higher computational requirements,this will aggravate the performance of model in simulator.So i stuck to low resolution images(32x16) and small convenet model.  
+Explored with nvidia model helped in driving car in Track1.But failed to work in Track 2.My interpretation is for this number of training dataset, it could be due to overfitting.As discussion was happening in forum, this could be due to million parameter models overfit , so some of them were showing success with smaller model. As my requirement is to run on CPU as i don't have GPU, i started to work with smaller convnet models.And one more issue is simulator (windows 64 bit) was taking almost 100% CPU to run and inference with original size(320x160 or higher resolution) needs higher computational requirements,this will aggravate the performance of model in simulator.This is the reason to work upon low resolution images(32x16) and small convenet model.  
+
+Data preparation played major role in getting CNN trained to tackle steep curves(by augmenting with flipping images),the car to recover from drifting off the road by augmenting with left and right camera images by adding/subtracting offset to steering angles and brightness augmentation helped in making CNN robust to varying light conditions.
