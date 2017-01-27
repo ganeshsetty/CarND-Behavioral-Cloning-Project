@@ -71,7 +71,7 @@ Output is steering control.
 
 The model is trained with following hyperparameters
 
-Epochs: 10, Batch Size: 128, Adam optimizer is used.The training data will be randomly shuffled at each epoch.
+Epochs: 10, Batch Size: 128, Adam optimizer is used, Loss function: MSE .The augmented training dataset is split into training and validation set as 80/20.The training data will be randomly shuffled at each epoch while validation set is not shuffled. 
 						
 	32x16x1 input ---> normalization layer ---> conv layer ---> ELU ----> Maxpooling ----> dropout------> output
 						
@@ -97,6 +97,12 @@ Epochs: 10, Batch Size: 128, Adam optimizer is used.The training data will be ra
  ----    **Dense(1)**  : input shape(252), output shape(1)
  
 ###Visualization of internal CNN state
+ This demonstrates that the CNN learned to detect useful road features on its own,i.e., with only the human steering angle as training signal. We  never explicitly trained it to detect the outlines of roads.(Reference end-to-end-dl-using-px.pdf nvidia whitepaper)
+ 
+![Visual_conv_input](/conv_layer_input.png)
+
+![Visual_conv_output](/conv_layer_output.png)
+
     						
 ###Summary
 
