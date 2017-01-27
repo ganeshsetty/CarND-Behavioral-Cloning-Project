@@ -97,7 +97,8 @@ Epochs: 10, Batch Size: 128, Adam optimizer is used, Loss function: MSE .The aug
  ----    **Dense(1)**  : input shape(252), output shape(1)
  
 ###Visualization of internal CNN state
- This demonstrates that the CNN learned to detect useful road features on its own,i.e., with only the human steering angle as training signal. We  never explicitly trained it to detect the outlines of roads.(Reference end-to-end-dl-using-px.pdf nvidia whitepaper)
+ This demonstrates that the CNN learned to detect useful road features on its own,i.e., with only the human steering angle as training signal. We  never explicitly trained it to detect the outlines of roads. By training the system end-to-end, it is not possible to make a clean break between which parts of the network function primarily as feature extractor and which serve as controller.
+(Reference end-to-end-dl-using-px.pdf nvidia whitepaper)
  
 ![Visual_conv_input](/conv_layer_input.png)
 
@@ -110,3 +111,7 @@ Initially started by adapting comma.ai and nvidia models. Comma.ai model didn't 
 Explored with nvidia model helped in driving car in Track1.But failed to work in Track 2.My interpretation is for this number of training dataset, it could be due to overfitting.As discussion was happening in forum, this could be due to million parameter models overfit , so some of them were showing success with smaller model. As my requirement is to run on CPU as i don't have GPU, i started to work with smaller convnet models.And one more issue is simulator (windows 64 bit) was taking almost 100% CPU to run and inference with original size(320x160 or higher resolution) needs higher computational requirements,this will aggravate the performance of model in simulator.This is the reason to work upon low resolution images(32x16) and small convenet model.  
 
 Data preparation played major role in getting CNN trained to tackle steep curves(by augmenting with flipping images),the car to recover from drifting off the road by augmenting with left and right camera images by adding/subtracting offset to steering angles and brightness augmentation helped in making CNN robust to varying light conditions.
+
+The simple convnet model trained for track 1 works well for track 2 also which means the model is trained for generalization.
+
+I would like to thank few of forum members carnd.slack.com (sorry for not naming individually as couldn't recollect their names) for providing insights in solving the problem. 
