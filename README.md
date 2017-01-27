@@ -1,7 +1,13 @@
 # CarND-Behavioral-Cloning-Project
 The project is about cloning the driving behavior by training a convolutional neural network (CNN) to map raw pixels from a single front-facing center camera directly to steering commands. 
 
-The repository has following folders and files.
+**Problem statement**: Train the CNN for track1 and test on same track by driving the car in simulator.The video is available
+https://youtu.be/V5Ur3tfxDKg
+
+**Self Assessment**: Test the CNN model for track 2, that demonstrates the generalization of the trained model.The video is available
+https://youtu.be/WkKWzckqj90
+
+##Repository structure
 
 **model.py** : 
            This python file has script to load the training dataset which has been resized to 32x16. The original images provided by
@@ -25,13 +31,31 @@ By running model.py, the following files are generated which has saved model arc
             
 **training_dataset_resized.p**: This pickled file is generated which has resized images of 32x16 size.The 3 camera dataset is segregated
             and saved. The script is available in **Data_Visualization_Preparation.ipynb** file.
+	    
+
+##Data Preprocessing
+The Udacity track 1 dataset is used as training dataset.
+The original images of training dataset are of resolution 320x160. In order to run training and inference phases on CPU, and also the DNN need to extract features(the road) only in high level, considered resizing to 32x16 and stored as pickled file.Data augmentation is carried out using below mentioned techniques. These augmented datset is converted from RGB to HSV color space and only Saturation channel is used for training the CNN.
+
+##Data Analysis and Augmentation
+The approach used to solve this problem is End to End learning using DNN.Since prediction of steering angle is 
+continuous , it is a regression problem. Eventhough left angle and right angle data are equally distributed,the straight angle data are almost 50% of total data. This may result in prediction biased towards straight steering. To remove the imbalance in data distribution in training set, data augmentaion is done with flipping center camera images, also the car to recover when gets off to the side of the road,left and right camera images are used with static offset  added/subtracted respectively to steer angles.Finally these inputs are brightness adjusted and augmented resulting in twice amount of training inputs.
+
+###Brightness Augmentation
+![Brightness_augment](https://github.com/ganeshsetty/CarND-Behavioral-Cloning-Project/edit/master/Brightness_augment.png)
+
+###Initial training set has following distribution
+straight_steers:4361        left_steers:1775     right_steers:1900       Total samples:8036
+###After data augmentation the training set has following distribution
+straight_steers:17444        left_steers:23366     right_steers:23478       Total samples:64288
             
- **Model Achitecture**:
- 						The network architecture is simple ConvNet of about 373 parameters.
-						It has a normalization layer, 1 convolution2D layer,Activation is ELU,Maxpooling layer with dropout is used.
-						Output is steering control.
+##Model Achitecture
+The network architecture is simple ConvNet of about 373 parameters.
+It has a normalization layer, 1 convolution2D layer,Activation is ELU,Maxpooling layer with dropout is used.
+Output is steering control. The model is trained with following hyperparameters
+Epochs: 10, Batch Size: 128, Adam optimizer
 						
-						32x16x1 input ---> normalization layer ---> conv layer ---> ELU ----> Maxpooling ----> dropout------> output
+	32x16x1 input ---> normalization layer ---> conv layer ---> ELU ----> Maxpooling ----> dropout------> output
 						
  ----   **Normalization layer**:
 						It normalizes on the fly the input 'S channel' to be within the range -0.5 to 0.5 as same as used in comma.ai amd nvidia
