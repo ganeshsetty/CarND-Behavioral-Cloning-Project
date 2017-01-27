@@ -37,16 +37,29 @@ By running model.py, the following files are generated which has saved model arc
 The Udacity track 1 dataset is used as training dataset.
 The original images of training dataset are of resolution 320x160. In order to run training and inference phases on CPU, and also the DNN need to extract features(the road) only in high level, considered resizing to 32x16 and stored as pickled file.Data augmentation is carried out using below mentioned techniques. These augmented datset is converted from RGB to HSV color space and only Saturation channel is used for training the CNN.
 
+![HSV](/image_HSV.png)
+
 ##Data Analysis and Augmentation
+###Initial training set has following distribution
+![Steers Hist](/hist_org.png)
+
+straight_steers:4361        left_steers:1775     right_steers:1900       Total samples:8036
+
 The approach used to solve this problem is End to End learning using DNN.Since prediction of steering angle is 
 continuous , it is a regression problem. Eventhough left angle and right angle data are equally distributed,the straight angle data are almost 50% of total data. This may result in prediction biased towards straight steering. To remove the imbalance in data distribution in training set, data augmentaion is done with flipping center camera images, also the car to recover when gets off to the side of the road,left and right camera images are used with static offset  added/subtracted respectively to steer angles.Finally these inputs are brightness adjusted and augmented resulting in twice amount of training inputs.
 
-###Brightness Augmentation
-![brightness_augment](https://github.com/ganeshsetty/CarND-Behavioral-Cloning-Project/edit/master/brightness_augment.png)
+###Flipping Center Camera images
 
-###Initial training set has following distribution
-straight_steers:4361        left_steers:1775     right_steers:1900       Total samples:8036
+![Flipped](/flipping_augment.png)
+
+###Brightness Augmentation
+
+![Brightness](/brightness_augment.png)
+
 ###After data augmentation the training set has following distribution
+
+![Steers Aug Hist](/hist_augment.png)
+
 straight_steers:17444        left_steers:23366     right_steers:23478       Total samples:64288
             
 ##Model Achitecture
