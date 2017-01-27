@@ -32,6 +32,8 @@ By running model.py, the following files are generated which has saved model arc
 **training_dataset_resized.p**: This pickled file is generated which has resized images of 32x16 size.The 3 camera dataset is segregated
             and saved. The script is available in **Data_Visualization_Preparation.ipynb** file.
 	    
+**png files**: These files are used for displaying visuals in this README.md file
+	    
 
 ##Data Preprocessing
 The Udacity track 1 dataset is used as training dataset.
@@ -65,8 +67,11 @@ straight_steers:17444        left_steers:23366     right_steers:23478       Tota
 ##Model Achitecture
 The network architecture is simple ConvNet of about 373 parameters.
 It has a normalization layer, 1 convolution2D layer,Activation is ELU,Maxpooling layer with dropout is used.
-Output is steering control. The model is trained with following hyperparameters
-Epochs: 10, Batch Size: 128, Adam optimizer
+Output is steering control. 
+
+The model is trained with following hyperparameters
+
+Epochs: 10, Batch Size: 128, Adam optimizer is used.The training data will be randomly shuffled at each epoch.
 						
 	32x16x1 input ---> normalization layer ---> conv layer ---> ELU ----> Maxpooling ----> dropout------> output
 						
