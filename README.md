@@ -42,7 +42,7 @@ The approach used to solve this problem is End to End learning using DNN.Since p
 continuous , it is a regression problem. Eventhough left angle and right angle data are equally distributed,the straight angle data are almost 50% of total data. This may result in prediction biased towards straight steering. To remove the imbalance in data distribution in training set, data augmentaion is done with flipping center camera images, also the car to recover when gets off to the side of the road,left and right camera images are used with static offset  added/subtracted respectively to steer angles.Finally these inputs are brightness adjusted and augmented resulting in twice amount of training inputs.
 
 ###Brightness Augmentation
-![Brightness_augment](https://github.com/ganeshsetty/CarND-Behavioral-Cloning-Project/edit/master/Brightness_augment.png)
+![brightness_augment](https://github.com/ganeshsetty/CarND-Behavioral-Cloning-Project/edit/master/brightness_augment.png)
 
 ###Initial training set has following distribution
 straight_steers:4361        left_steers:1775     right_steers:1900       Total samples:8036
