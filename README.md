@@ -7,6 +7,12 @@ https://youtu.be/V5Ur3tfxDKg
 **Self Assessment**: Test the CNN model for track 2, that demonstrates the generalization of the trained model.The video is available
 https://youtu.be/WkKWzckqj90
 
+##Pre-requisites
+Windows 64 bit Beta simulator used
+
+Udacity track 1 dataset
+
+
 ##Repository structure
 
 **model.py** : 
@@ -27,7 +33,7 @@ By running model.py, the following files are generated which has saved model arc
 
 **Data_Visualization_Preparation.ipynb** : This file has visualization of 
             Initial dataset for analysis to know whether data is balanced or imbalanced.
-            Visualization after each steps used in augmentation of dataset.
+            Visualization after each steps used in augmentation of dataset.Also visualization of internal CNN states
             
 **training_dataset_resized.p**: This pickled file is generated which has resized images of 32x16 size.The 3 camera dataset is segregated
             and saved. The script is available in **Data_Visualization_Preparation.ipynb** file.
@@ -112,6 +118,8 @@ Explored with nvidia model helped in driving car in Track1.But failed to work in
 
 Data preparation played major role in getting CNN trained to tackle steep curves(by augmenting with flipping images),the car to recover from drifting off the road by augmenting with left and right camera images by adding/subtracting offset to steering angles and brightness augmentation helped in making CNN robust to varying light conditions.
 
+The network is trained with trial and error by varying number of filters in Convolution layer and choosen 12, kernel size (3,3), shuffle training data after each epoch,Maxpooling strides,dropout probability etc and checked the performance on track 1 in simulator. Adjusted the throttle values in drive.py.
+
 The simple convnet model trained for track 1 works well for track 2 also which means the model is trained for generalization.
 
-I would like to thank few of forum members carnd.slack.com (sorry for not naming individually as couldn't recollect their names) for providing insights in solving the problem. 
+I would like to thank few of forum members carnd.slack.com (my apologies for not naming individually as couldn't recollect their names) for providing insights in solving the problem. 
