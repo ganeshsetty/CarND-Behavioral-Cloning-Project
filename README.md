@@ -36,7 +36,9 @@ By running model.py, the following files are generated which has saved model arc
             Visualization after each steps used in augmentation of dataset.Also visualization of internal CNN states
             
 **training_dataset_resized.p**: This pickled file is generated which has resized images of 32x16 size.The 3 camera dataset is segregated
-            and saved. The script is available in **Data_Visualization_Preparation.ipynb** file.
+            and saved. The script is available in **Data_Visualization_Preparation.ipynb** file.The udacity data having images of
+	    resolution 320x160 is read and resized.The section of code is under Markdown cell. Udacity data is not uploaded in
+	    repository owing to large size.
 	    
 **png files**: These files are used for displaying visuals in this README.md file
 	    
