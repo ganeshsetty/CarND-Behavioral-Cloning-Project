@@ -46,15 +46,11 @@ def telemetry(sid, data):
     resized = cv2.resize(image_colorconv,(32,16)).reshape(1,16,32,1)
     steering_angle = float(model.predict(resized, batch_size=1))
     # The driving model currently just outputs a constant throttle. Feel free to edit this.
-    # Explictily for track 2
-    if (math.fabs(steering_angle) > 0.15):
-        throttle =0.25
-      
-    else:
-        throttle = 0.30
-        
-    # comment below value setting for track 2 (this is used for track 1)
-    throttle = 0.16
+    # Implement Proportional controller
+    DESIRED_SPEED = 20
+    #Loop gain
+    Kp = 0.5
+    throttle = (DESIRED_SPEED -float(speed))*Kp
     
     print(steering_angle, throttle)
     send_control(steering_angle, throttle)
