@@ -23,7 +23,7 @@ Udacity track 1 dataset
            
 **drive.py** : 
            This python file is modified to include preprocessing of image(as same as done during training phase) fed to CNN for inference
-           phase. For Track1 and Track2, different throttle values are set.For Track 1, throttle value set to 0.16. Before running for Track 2 , comment this.
+           phase. Implemented Proportional controller to adjust throttle in order to maintain to desired speed
            
 By running model.py, the following files are generated which has saved model architecture and weights.
 
