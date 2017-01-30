@@ -41,6 +41,15 @@ By running model.py, the following files are generated which has saved model arc
 	    repository owing to large size.
 	    
 **png files**: These files are used for displaying visuals in this README.md file
+
+### Following files are added that uses fit_generator
+
+**Data_Visualization_Preparation_generator.ipynb**: This file is added after reviewer comments to improve on memory usage during training.This is done by generating the dataset on the fly using fit_generator.
+
+**model_generator.json**: The corresponding model architecture 
+
+**model_generator.h5**: The corresponding model weights
+
 	    
 
 ##Data Preprocessing
@@ -125,3 +134,5 @@ The network is trained with trial and error by varying number of filters in Conv
 The simple convnet model trained for track 1 works well for track 2 also which means the model is trained for generalization.
 
 I would like to thank few of forum members carnd.slack.com (my apologies for not naming individually as couldn't recollect their names) for providing insights in solving the problem. 
+
+As per reviewer recommendations, refered the blog https://medium.com/@ksakmann/behavioral-cloning-make-a-car-drive-like-yourself-dc6021152713 which helped in implementing model training using fit_generator.Thanks for Kaskar Sakmann for this valuable blog.
